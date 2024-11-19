@@ -1,0 +1,20 @@
+[project]
+name="flowx_OriginalGoldman"
+version="0.0.1"
+authors = [
+    { name="George-Goldman", email="georgegoldmanjohn.o@gmail.com" },
+]
+description = "the feature of blockchain"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[project.urls]
+
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
