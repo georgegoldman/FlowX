@@ -31,7 +31,3 @@ def generate_hardware_fingerprint():
     # Generate a SHA-256 hash
     fingerprint = hashlib.sha256(info_string.encode()).hexdigest()
     return fingerprint
-
-# Generate and display the hardware fingerprint
-fingerprint = generate_hardware_fingerprint()
-print(f"Hardware Fingerprint: {fingerprint}")
