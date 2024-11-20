@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name="flowx_sdk"
-version="0.0.7"
+version="0.0.13"
 authors = [
     { name="George-Goldman", email="georgegoldmanjohn.o@gmail.com" },
 ]
