@@ -1,9 +1,9 @@
-from pydantic_settings import (
+from pydantic_settings import ( #type: ignore
     BaseSettings,
     PydanticBaseSettingsSource,
     SettingsConfigDict
 )
-from pydantic import Field
+from pydantic import Field #type: ignore
 
 class Settings(BaseSettings):
     base_url: str

@@ -1,11 +1,11 @@
 from .core.config import settings
-import requests
+import requests #type: ignore
 
 class Client:
     def __init__(self, api_key: str) -> None:
         self.api_key = api_key
         self._base_url = settings.base_url
-        self.authenticate = False
+        self.authenticate = False #type: ignore
 
         # Initialize the http client (requests)
         self.session = requests.Session()

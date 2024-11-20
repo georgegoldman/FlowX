@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name="flowx_sdk"
-version="0.0.2"
+version="0.0.7"
 authors = [
     { name="George-Goldman", email="georgegoldmanjohn.o@gmail.com" },
 ]
@@ -24,5 +24,5 @@ classifiers = [
 [project.urls]
 home = "https://github.com/georgegoldman/FlowX.git"
 
-
-
+[project.scripts]
+flowx = "flowx_sdk.cli:main"

@@ -1,4 +1,5 @@
 import argparse
+from .sign_device import sign_device
 
 def main():
     parser = argparse.ArgumentParser(description="Flowx_sdk cli tool")
@@ -8,4 +9,4 @@ def main():
     args = parser.parse_args()
 
     if args.command == 'init':
-        print("")
+        print(sign_device.generate_hardware_fingerprint())
