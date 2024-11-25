@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name="flowx_sdk"
-version="0.0.13"
+version="0.0.1"
 authors = [
     { name="George-Goldman", email="georgegoldmanjohn.o@gmail.com" },
 ]
@@ -12,7 +12,10 @@ description = "the feature of blockchain"
 readme = "README.md"
 
 dependencies = [
-    "requests>=2.20",
+    "termcolor==2.5.0",
+    "aiohttp==3.11.7",
+    "asyncio==3.4.3",
+    "python-dotenv==1.0.1",
 ]
 
 classifiers = [

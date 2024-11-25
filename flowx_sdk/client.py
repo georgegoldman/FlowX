@@ -24,7 +24,7 @@ class Client:
 
         if response.status_code == 200:
             self.authenticate = True
-            print(f"Authenticated successfully")
+            print("Authenticated successfully")
         else:
             self.authenticate = False
             print("Authentication failed")

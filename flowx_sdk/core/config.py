@@ -3,7 +3,6 @@ from pydantic_settings import ( #type: ignore
     PydanticBaseSettingsSource,
     SettingsConfigDict
 )
-from pydantic import Field #type: ignore
 
 class Settings(BaseSettings):
     base_url: str
