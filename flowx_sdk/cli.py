@@ -67,6 +67,8 @@ class FlowxCLI:
         """Retrieve 'access_token' from the environment."""
         return os.getenv("access_token")
 
+    
+
     async def signup(self):
         print("Create an account")
         username = input("Enter username: ")

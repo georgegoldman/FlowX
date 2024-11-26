@@ -1,11 +1,13 @@
 from .core.config import settings
 import requests #type: ignore
+from flowx_sdk.cli import FlowxCLI
 
 class Client:
     def __init__(self, api_key: str) -> None:
+        self.flowx_cli = FlowxCLI()
         self.api_key = api_key
         self._base_url = settings.base_url
-        self.authenticate = False #type: ignore
+        self.authenticated = False #type: ignore
 
         # Initialize the http client (requests)
         self.session = requests.Session()
@@ -16,15 +18,24 @@ class Client:
 
     def authenticate(self):
         """Authenticate with the API using the provided API key."""
-        auth_url = f"{self._base_url}/auth"
-        headers = {"X-Token": self.api_key} # Use X-Token header for authentication
+        self.flowx_cli.load_flowx_env()
+        
+        auth_url = f"{self._base_url}/verify-token/{self.api_key}"
+        print(f"Authenticating with URL: {auth_url}")  # Debugging
+
+        payload = {}
+        headers = {'Authorization': f"Bearer {self.flowx_cli.get_access_token()}"} # Use X-Token header for authentication
+        print(f"Headers: {headers}")  # Debugging
+
 
         # end a GET or POST request to verify the API key
-        response = self.session.get(auth_url, headers=headers)
+        response = self.session.get(auth_url, headers=headers, data=payload)
+        print(response.status_code)
+        print(response)
 
         if response.status_code == 200:
-            self.authenticate = True
+            self.authenticated = True
             print("Authenticated successfully")
         else:
-            self.authenticate = False
-            print("Authentication failed")
+            self.authenticated = False
+            print("Authentication failed 🌋 please check you API-Token ")
