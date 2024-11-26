@@ -39,3 +39,12 @@ class Client:
         else:
             self.authenticated = False
             print("Authentication failed 🌋 please check you API-Token ")
+
+    def get_supported_currencies(self) -> dict:
+        supported_currencies = {
+            "stablecoins": ["USDT", "USDC", "DAI", "BUSD", "EUROC"],
+            "african_fiat": ["NGN", "KES", "ZAR", "GHS", "TZS", "UGX"],
+            "global_fiat": ["USD", "EUR", "GBP"],
+            "cryptocurrencies": ["SUI", "BTC", "ETH", "XRP"]
+        }
+        return supported_currencies

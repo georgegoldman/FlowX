@@ -32,7 +32,7 @@ pip install flowx-sdk
 Alternatively, you can install the latest development version directly from the GitHub repository:
 
 ```bash
-pip install git+https://github.com/yourusername/flowx-sdk.git
+pip install git@github.com:georgegoldman/FlowX.git
 ```
 
 ---
@@ -44,10 +44,12 @@ After installing the `flowx-sdk`, you can start integrating FlowX into your Pyth
 ### Example:
 
 ```python
-import flowx
+from flowx_sdk.client import Client
 
 # Initialize FlowX client
-client = flowx.Client(api_key="your_api_key")
+client = Client(api_key="your-api-key")
+
+client.authenticated #True
 
 # Example: Get supported currencies
 currencies = client.get_supported_currencies()
@@ -113,7 +115,35 @@ For security purposes, it is recommended to keep your API key in an environment 
 The SDK interacts with FlowX's API endpoints. Below are some key endpoints:
 
 ### 1. **GET /supported_currencies**
-   - Returns a list of currencies supported by FlowX for cross-border payments.
+   - ### Supported Currencies
+
+        1. **Stablecoins**
+            - **USDT** (Tether)
+            - **USDC** (USD Coin)
+            - **DAI** (MakerDAO’s decentralized stablecoin)
+            - **BUSD** (Binance USD)
+            - **EUROC** (Circle's Euro-backed stablecoin)
+
+        2. **Local African Currencies (For Real-World** Integration)
+            - **NGN** (Nigerian Naira)
+            - **KES** (Kenyan Shilling)
+            - **ZAR** (South African Rand)
+            - **GHS** (Ghanaian Cedi)
+            - **TZS** (Tanzanian Shilling)
+            - **UGX** (Ugandan Shilling)
+
+        3. **Global Reserve Currencies**
+            - **USD** (US Dollar)
+            - **EUR** (Euro)
+            - **GBP** (British Pound)
+
+        4. **Cryptocurrencies for Liquidity Bridging**
+            - **SUI** (Sui)
+            - **BTC** (Bitcoin)
+            - **ETH** (Ethereum)
+            - **XRP** (Ripple)
+
+
 
 ### 2. **POST /send_payment**
    - Initiates a cross-border payment from one wallet to another.
