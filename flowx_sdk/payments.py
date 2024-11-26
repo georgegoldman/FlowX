@@ -3,10 +3,9 @@
 
 import requests #type: ignore
 
-class FlowXPayments:
-    def __init__(self, api_url, api_key):
-        self.api_url = api_url
-        self.api_key = api_key
+class Payments:
+    def __init__(self) -> None:
+        pass
 
     def send_payment(self, sender_wallet, receiver_wallet, amount, stablecoin="USDC"):
         payload = {
@@ -15,7 +14,11 @@ class FlowXPayments:
             "amount": amount,
             "stablecoin": stablecoin
         }
-        print(f"{payload} payment made")
+
+        
+        return {"transaction_status": "Transaction successful", "status_code": "200",
+                "transaction_detail": payload
+                }
         # headers = {"Authorization": f"Bearer {self.api_key}"}
         # response = requests.post(f"{self.api_url}/payments", json=payload, headers=headers)
         # return response.json()

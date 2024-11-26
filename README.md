@@ -21,6 +21,46 @@ This SDK provides an easy-to-use interface for integrating FlowX's cross-border 
 
 ---
 
+## Set an account 
+
+First install Flowx as a local command globally on your machine
+
+### Create a virtual environment
+```
+python -m venv .virtual_env_name
+```
+
+### Start the virtual environment
+```
+source .venv/bin/activate
+```
+### install the command with pipx
+```
+pipx install flowx-sdk
+```
+### If not for the 1st time do 
+```
+pipx install -f flowx-sdk
+```
+### After that run the command to initialize the programm
+```
+flowx init
+```
+### Login to authenticate your machine
+```
+flowx login
+```
+### Or signup 
+```
+flowx signup
+```
+### Create token
+```
+flowx create --token <api-token>
+```
+## Then you can use the module in your project
+
+
 ## Installation
 
 To install the FlowX SDK, you can use `pip`:
