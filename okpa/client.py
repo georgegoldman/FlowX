@@ -72,3 +72,6 @@ class Client:
             if new_transaction.transaction_id == payment_id:
                 return transaction.status
         return "Transaction does not exist"
+
+    def txn_status(self, id) -> str:
+        transaction = Transaction
