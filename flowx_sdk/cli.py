@@ -7,6 +7,7 @@ import json
 from dotenv import load_dotenv #type: ignore
 from .error_handler import CustomException
 from .sign_device import sign_device
+import re
 
 def main():
     cli = FlowxCLI()  # Create an instance of the FlowxCLI class
@@ -40,9 +41,13 @@ class FlowxCLI:
         # Subcommand: signup
         subparsers.add_parser('signup', help='Sign up for Flowx SDK')
 
+        # subparsers.add_parser('get', help='Get -> eg, get api token')
+
         # Subcommand: create
         create_parser = subparsers.add_parser('create', help='Create a resource')
         create_parser.add_argument('--token', required=True, help='API-Token for resource creation')
+
+        get_command =  subparsers.add_parser('get-api-key', help='Get -> eg, get api token')
 
         args = parser.parse_args()
 
@@ -54,6 +59,8 @@ class FlowxCLI:
             asyncio.run(self.signup())
         elif args.command == 'create':
             asyncio.run(self.create_api_token(args.token))
+        elif args.command == "get-api-key":
+            asyncio.run(self.get_key())
 
     def check_password_match(self, password: str, confirm_password: str):
         return password == confirm_password
@@ -66,6 +73,21 @@ class FlowxCLI:
     def get_access_token(self):
         """Retrieve 'access_token' from the environment."""
         return os.getenv("access_token")
+    
+
+    async def get_key(self):
+        access_token_pattern = r"api_token=([^\s&]+)"
+        with open(self.file_path, 'r') as file:
+            content  = file.read()
+
+            #search for the token
+            match = re.search(access_token_pattern, content)
+            if match:
+                access_token = match.group(1)
+                print(f"API Key: {access_token}")
+            else:
+                print("Access token not found in the file.")
+
 
     
 

@@ -30,23 +30,6 @@ class Transaction:
         transaction_id = hashlib.sha256(random_data).hexdigest()[:64]  # Create a 64-character hex string
         return transaction_id
 
-    def send_payment(self, sender_wallet, receiver_wallet, amount, stablecoin="USDC"):
-        """Send payment from one wallet to another."""
-        self.transaction_id = self.generate_transaction_id() # Generate a Sui-style transaction ID and update the transaction ID
-        print(f"Transaction ID: {self.transaction_id}")  # Debugging
-        data = {
-            "transaction_id": self.transaction_id,
-            "sender": sender_wallet,
-            "receiver": receiver_wallet,
-            "amount": amount,
-            "stablecoin": stablecoin
-        }
-        # response = requests.post(f'{self.network_url}/send_payment', json=data)
-        # if response.status_code == 200:
-        #     return response.json()  # Return transaction info
-        # else:
-        #     raise Exception("Failed to send payment")
-        return self.transaction_id
 
 
     def get_transaction_status(self, tx_id):
