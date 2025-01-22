@@ -51,10 +51,10 @@ class Client:
         }
         return str(supported_currencies)
     
-    def send_payment(self, sender_wallet, reciever_wallet, amount, stablecoin) -> Transaction:
+    def send_payment(self, sender, recipient, amount, stablecoin) -> Transaction:
         
         transaction_manager = TransactionManager()
-        new_transaction = transaction_manager.create_transaction(sender_wallet, reciever_wallet, amount, stablecoin)
+        new_transaction = transaction_manager.create_transaction(sender, recipient, amount, stablecoin)
         wallet = Wallet()
         wallet.send_fund(new_transaction)
         for index, transaction in enumerate(transaction_manager.list_transactions()):

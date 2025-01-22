@@ -47,8 +47,8 @@ class TransactionManager:
     def __init__(self):
         self._transactions: list[Transaction] = [] # Strictly a list of Transaction objects
 
-    def create_transaction(self, sender_wallet, receiver_wallet, amount, stablecoin="USDC") -> Transaction:
-        transaction = Transaction(sender_wallet, receiver_wallet, amount, stablecoin)
+    def create_transaction(self, sender, recipient, amount, stablecoin="USDC") -> Transaction:
+        transaction = Transaction(sender, recipient, amount, stablecoin)
         self.add_transaction(transaction)
         return transaction
 
